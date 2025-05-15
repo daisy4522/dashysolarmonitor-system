@@ -1,0 +1,96 @@
+intergrating with ESP32_AP #include
+<WiFi.h>
+  #include
+  <HTTPClient.h>
+    const char* ssid = "your_SSID"; const char* password = "your_PASSWORD";
+    const String apiKey = "your_API_KEY"; const String latitude =
+    "your_LATITUDE"; const String longitude = "your_LONGITUDE"; void setup() {
+    Serial.begin(115200); WiFi.begin(ssid, password); while (WiFi.status() !=
+    WL_CONNECTED) { delay(1000); Serial.println("Connecting to WiFi..."); }
+    Serial.println("Connected to WiFi"); String url =
+    "https://api.openweathermap.org/data/2.5/solar_radiation?lat=" + latitude +
+    "&lon=" + longitude + "&appid=" + apiKey; HTTPClient http; http.begin(url);
+    int httpCode = http.GET(); if (httpCode > 0) { String payload =
+    http.getString(); Serial.println(payload); } else { Serial.println("Error on
+    HTTP request"); } http.end(); } void loop() { // Add your loop code here }
+  </HTTPClient.h></WiFi.h
+>
+☀️ Accessing Solar Radiation Data OpenWeatherMap offers several APIs related to
+solar radiation: Solar Radiation API: Provides current and forecast solar
+radiation data, including Global Horizontal Irradiance (GHI), Direct Normal
+Irradiance (DNI), and Diffuse Horizontal Irradiance (DHI) indices for both clear
+sky and cloudy sky models. OpenWeatherMap +4 OpenWeather +4 OpenWeatherMap +4
+Solar Panel Energy Prediction API: Estimates solar panel power output based on
+the panel's technical characteristics and location. Wikipedia +2 OpenWeatherMap
++2 OpenWeatherMap +2 Solar Irradiance History Bulk API: Provides historical
+solar radiation data for any location, available in CSV and JSON formats.
+OpenWeatherMap +1 OpenWeatherMap +1 🔌 Integrating with ESP32 To fetch solar
+radiation data from the OpenWeatherMap API using the ESP32, you can use the
+HTTPClient library to make GET requests. Here's an example code snippet: cpp
+Copy Edit #include
+<WiFi.h>
+  #include
+  <HTTPClient.h>
+    const char* ssid = "your_SSID"; const char* password = "your_PASSWORD";
+    const String apiKey = "your_API_KEY"; const String latitude =
+    "your_LATITUDE"; const String longitude = "your_LONGITUDE"; void setup() {
+    Serial.begin(115200); WiFi.begin(ssid, password); while (WiFi.status() !=
+    WL_CONNECTED) { delay(1000); Serial.println("Connecting to WiFi..."); }
+    Serial.println("Connected to WiFi"); String url =
+    "https://api.openweathermap.org/data/2.5/solar_radiation?lat=" + latitude +
+    "&lon=" + longitude + "&appid=" + apiKey; HTTPClient http; http.begin(url);
+    int httpCode = http.GET(); if (httpCode > 0) { String payload =
+    http.getString(); Serial.println(payload); } else { Serial.println("Error on
+    HTTP request"); } http.end(); } void loop() { // Add your loop code here }
+    Replace your_SSID, your_PASSWORD, your_API_KEY, your_LATITUDE, and
+    your_LONGITUDE with your actual Wi-Fi credentials, OpenWeatherMap API key,
+    and location coordinates. 📊 Displaying Data on a Web Interface To visualize
+    solar radiation data, you can set up a simple web server on the ESP32 using
+    the ESPAsyncWebServer library. This allows you to display real-time data on
+    a webpage. cpp Copy Edit #include
+    <WiFi.h>
+      #include
+      <ESPAsyncWebServer.h>
+        #include
+        <HTTPClient.h>
+          const char* ssid = "your_SSID"; const char* password =
+          "your_PASSWORD"; const String apiKey = "your_API_KEY"; const String
+          latitude = "your_LATITUDE"; const String longitude = "your_LONGITUDE";
+          AsyncWebServer server(80); void setup() { Serial.begin(115200);
+          WiFi.begin(ssid, password); while (WiFi.status() != WL_CONNECTED) {
+          delay(1000); Serial.println("Connecting to WiFi..."); }
+          Serial.println("Connected to WiFi"); server.on("/", HTTP_GET,
+          [](AsyncWebServerRequest *request){ String url =
+          "https://api.openweathermap.org/data/2.5/solar_radiation?lat=" +
+          latitude + "&lon=" + longitude + "&appid=" + apiKey; HTTPClient http;
+          http.begin(url); int httpCode = http.GET(); String payload = "{}"; if
+          (httpCode > 0) { payload = http.getString(); } http.end(); String html
+          = "
+          <html>
+            <body>
+              <h1>Solar Radiation Data</h1>
+              <pre>" + payload + "</pre>
+            </body>
+          </html>
+          "; request->send(200, "text/html", html); }); server.begin(); } void
+          loop() { // Add your loop code here } This code sets up a basic web
+          server that fetches solar radiation data from the OpenWeatherMap API
+          and displays it on a webpage. 🛠️ Enhancing the System To further
+          enhance your solar monitoring system: Data Logging: Store solar
+          radiation data in a database (e.g., Firebase, MySQL) for historical
+          analysis. Data Visualization: Use JavaScript libraries like Chart.js
+          or D3.js to create interactive graphs and charts on your web
+          interface. User Authentication: Implement JWT-based authentication to
+          secure access to your data. Wikipedia Alerts: Set up email or SMS
+          notifications to alert users of significant changes in solar radiation
+          levels. By integrating solar radiation data into your solar monitoring
+          system, you can gain valuable insights into your energy production and
+          optimize your solar panel performance. If you need further assistance
+          with any of these steps or have additional questions, feel free to
+          ask! Sources Search Reason Deep research Create image ChatGPT can make
+          mistakes. Check important info.</HTTPClient.h
+        ></ESPAsyncWebServer.h
+      ></WiFi.h
+    ></HTTPClient.h
+  ></WiFi.h
+>

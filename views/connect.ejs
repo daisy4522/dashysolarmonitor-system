@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wi-Fi Configuration</title>
+  </head>
+  <body>
+    <h2>Configure Wi-Fi</h2>
+    <form id="wifi-form">
+      <label for="ssid">SSID:</label>
+      <input type="text" id="ssid" name="ssid" required /><br /><br />
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+      /><br /><br />
+      <button type="submit">Connect</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("wifi-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const ssid = document.getElementById("ssid").value;
+          const password = document.getElementById("password").value;
+
+          fetch("http://<ESP32_IP_ADDRESS>/connect", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ssid, password}),
+          })
+            .then((response) => response.text())
+            .then((data) => {
+              alert("Response from device: " + data);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+    </script>
+  </body>
+</html>
+#include
+<WiFi.h>
+  #include
+  <WebServer.h>
+    #include
+    <ArduinoJson.h>
+      WebServer server(80); void handleConnect() { if (server.hasArg("plain") ==
+      false) { server.send(400, "text/plain", "Body not received"); return; }
+      String body = server.arg("plain"); StaticJsonDocument<200> doc;
+      DeserializationError error = deserializeJson(doc, body); if (error) {
+      server.send(400, "text/plain", "Invalid JSON"); return; } const char* ssid
+      = doc["ssid"]; const char* password = doc["password"]; WiFi.begin(ssid,
+      password); int attempts = 0; while (WiFi.status() != WL_CONNECTED &&
+      attempts < 10) { delay(1000); attempts++; } if (WiFi.status() ==
+      WL_CONNECTED) { server.send(200, "text/plain", "Connected to Wi-Fi"); }
+      else { server.send(500, "text/plain", "Failed to connect"); } } void
+      setup() { Serial.begin(115200); WiFi.softAP("ESP32_AP"); // Set up as an
+      access point server.on("/connect", HTTP_POST, handleConnect);
+      server.begin(); } void loop() { server.handleClient(); }
+    </ArduinoJson.h></WebServer.h
+  ></WiFi.h
+>
