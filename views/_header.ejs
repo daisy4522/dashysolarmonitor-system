@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="/styles/styles.css" />
+<header>
+  <% if(locals.user){ %>
+  <p><%= locals.user.name %></p>
+  <% }else{ %>
+  <a href="/">Dashy System</a>
+  <% } %>
+
+  <nav>
+    <% if(locals.user){ %>
+    <a href="/about">About</a>
+    <a herf="/data">Data Update</a>
+    <a href="/settings">Settings Update</a>
+    <a href="alerts">Alerts</a>
+
+    <a href="/logout">Logout</a>
+    <% }else{ %>
+    <a href="/about">About</a>
+    <a href="/features">Features</a>
+    <a href="/login">Login</a>
+    <% } %>
+  </nav>
+</header>

@@ -1,0 +1,282 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f7faff;
+  color: #222;
+  line-height: 1.6;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background-color: darkgreen;
+
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+}
+
+/* Main layout */
+main {
+  flex-grow: 1;
+  padding: 40px 20px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: #e0f3ff;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 60px;
+  box-shadow: 0 6px 12px rgba(0, 74, 153, 0.15);
+}
+
+.hero-content {
+  flex: 1 1 480px;
+  max-width: 550px;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #003b7a;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  color: #00509e;
+}
+
+.hero-content .cta-button {
+  background-color: darkgreen;
+  color: #fff;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.hero-content .cta-button:hover {
+  background-color: darkgreen;
+}
+
+.hero-image {
+  flex: 1 1 300px;
+  max-width: 450px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0, 74, 153, 0.25);
+}
+
+/* Section Titles */
+.section h2,
+.features h2,
+.demo h2,
+.contact h2 {
+  font-size: 2.2rem;
+  color: #003b7a;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Selection radios */
+.selection label {
+  font-size: 1.15rem;
+  margin-right: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selection input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* Features Cards */
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  width: 320px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgb(0 0 0 / 0.15);
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #004a99;
+  font-weight: 700;
+}
+
+.card p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Sections General */
+.section {
+  margin-bottom: 70px;
+  padding: 0 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.inverters {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+/* Paragraphs in sections */
+.section p {
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.5;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Links in paragraphs */
+.section a {
+  color: #0077cc;
+  text-decoration: underline;
+  font-weight: 600;
+}
+.section a:hover,
+.section a:focus {
+  color: #005599;
+}
+
+/* Demo Section */
+.demo-video {
+  max-width: 850px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgb(0 74 153 / 0.25);
+}
+
+.demo-video iframe {
+  width: 100%;
+  height: 480px;
+  border: none;
+}
+
+/* Contact Form */
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact input[type="text"],
+.contact input[type="email"],
+.contact textarea {
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.8px solid #ccc;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+  min-height: 40px;
+}
+
+.contact input[type="text"]:focus,
+.contact input[type="email"]:focus,
+.contact textarea:focus {
+  border-color: #004a99;
+  outline: none;
+}
+
+.contact textarea {
+  min-height: 120px;
+}
+
+.contact button {
+  padding: 14px 25px;
+  font-size: 1.1rem;
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.contact button:hover,
+.contact button:focus {
+  background-color: darkgreen;
+  outline: none;
+}
+
+/* Footer */
+footer {
+  background-color: darkgreen;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  font-weight: 600;
+  margin-top: 40px;
+  border-radius: 10px 10px 0 0;
+}

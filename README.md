@@ -214,46 +214,6 @@ setInterval(readSensors, 2000);
 🌐 Optional: Web Interface
 To visualize the sensor data on a web page, you can set up a simple HTTP server:
 
-javascript
-Copy
-Edit
-const wifi = require("Wifi");
-const http = require("http");
-
-wifi.connect("Your_SSID", {password: "Your_PASSWORD"}, function(err) {
-if (err) {
-console.log("Connection error: " + err);
-return;
-}
-console.log("Connected to Wi-Fi. IP Address: ", wifi.getIP().ip);
-
-http.createServer(function (req, res) {
-dht.read(function (a) {
-ina219.getBusVoltage(function (voltage) {
-ina219.getCurrent(function (current) {
-ina219.getPower(function (power) {
-var adcValue = analogRead(ACS712_PIN);
-var voltageACS = adcValue \* V_REF;
-var currentACS = (voltageACS - (V_REF / 2)) / ACS712_SENSITIVITY;
-
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.end(
-              "<h1>Sensor Readings</h1>" +
-              "<p>Temperature: " + a.temp.toFixed(2) + "°C</p>" +
-              "<p>Humidity: " + a.rh.toFixed(2) + "%</p>" +
-              "<p>Voltage: " + voltage.toFixed(2) + " V</p>" +
-              "<p>Current: " + current.toFixed(2) + " mA</p>" +
-              "<p>Power: " + power.toFixed(2) + " mW</p>" +
-              "<p>ACS712 Current: " + currentACS.toFixed(2) + " A</p>"
-            );
-          });
-        });
-      });
-    });
-
-}).listen(80);
-});
-
 Microcontroller Firmware:
 
 Program the microcontroller with the provided firmware to read sensor data and transmit it wirelessly.

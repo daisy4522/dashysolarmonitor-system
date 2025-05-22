@@ -3,62 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashy Solar Monitoring System</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f7f9;
-        margin: 0;
-        padding: 0;
-      }
-      header {
-        background-color: #2c3e50;
-        color: white;
-        padding: 1em;
-        text-align: center;
-      }
-      nav {
-        background-color: #34495e;
-        padding: 0.5em;
-        text-align: center;
-      }
-      nav a {
-        color: white;
-        margin: 0 1em;
-        text-decoration: none;
-      }
-      main {
-        padding: 2em;
-      }
-      .selection {
-        margin-bottom: 2em;
-      }
-      .selection label {
-        margin-right: 1em;
-      }
-      .section {
-        margin-bottom: 2em;
-      }
-      footer {
-        background-color: #2c3e50;
-        color: white;
-        text-align: center;
-        padding: 1em;
-      }
-    </style>
+    <title>Solar Monitor | Smart Energy Dashboard</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Solar Monitoring System</h1>
-      <p>Real-time Energy Tracking for Home and Commercial Use</p>
-    </header>
-    <nav>
-      <a href="#overview">Overview</a>
-      <a href="#inverters">Inverters</a>
-      <a href="#sense">Sense Monitor</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <%- include("_header.ejs") %>
     <main>
+      <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-up">
+          <h1>Monitor Your Solar Energy in Real-Time</h1>
+          <p>
+            Track voltage, current, power, and battery levels with precision.
+          </p>
+          <a href="#demo" class="cta-button">View Demo</a>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+          <img src="/images/solarpanel.jpg" alt="Solar Dashboard" />
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
       <section id="overview" class="section">
         <h2>Choose Your Application</h2>
         <div class="selection">
@@ -75,6 +39,29 @@
           your needs. Whether for residential or commercial purposes, our system
           adapts to provide optimal performance and insights.
         </p>
+      </section>
+      <section class="features" id="features">
+        <h2 data-aos="fade-up">Key Features</h2>
+        <div class="feature-cards">
+          <div class="card" data-aos="zoom-in">
+            <img
+              src="/images/realtimeminitoring.jpg"
+              alt="Real-Time Monitoring"
+            />
+            <h3>Real-Time Monitoring</h3>
+            <p>Instant updates on your solar system's performance.</p>
+          </div>
+          <div class="card" data-aos="zoom-in" data-aos-delay="100">
+            <img src="/images/advancedanalytics.jpg" alt="Analytics" />
+            <h3>Advanced Analytics</h3>
+            <p>Detailed insights into energy production and consumption.</p>
+          </div>
+          <div class="card" data-aos="zoom-in" data-aos-delay="200">
+            <img src="/images/samrtalerts.jpg" alt="Alerts" />
+            <h3>Smart Alerts</h3>
+            <p>Receive notifications for system anomalies and maintenance.</p>
+          </div>
+        </div>
       </section>
       <section id="inverters" class="section">
         <h2>Integrated Inverters</h2>
@@ -95,16 +82,37 @@
           trends, and optimize your energy efficiency with ease.
         </p>
       </section>
-      <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>
-          For more information or to get started with your solar monitoring
-          system, please contact us at
-          <a href="mailto:info@solarmonitoring.com">info@solarmonitoring.com</a
-          >.
-        </p>
+
+      <section class="demo" id="demo">
+        <h2 data-aos="fade-up">Live Demo</h2>
+        <div class="demo-video" data-aos="fade-up" data-aos-delay="100">
+          <iframe
+            src="https://www.youtube.com/embed/your-demo-video"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
       </section>
+      <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 DashySolarMonitor. All rights reserved.</p>
+      </footer>
+
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="app.js"></script>
     </main>
-    <footer>&copy; 2025 Solar Monitoring System. All rights reserved.</footer>
   </body>
 </html>
