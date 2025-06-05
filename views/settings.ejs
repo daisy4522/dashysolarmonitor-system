@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings Page</title>
+  </head>
+  <body>
+    <%- include("_header.ejs") %>
+    <h1>Settings</h1>
+    <p>Manage your account settings here.</p>
+    <form action="/settings/update" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <br />
+      <button type="submit">Update Settings</button>
+    </form>
+    <p><a href="/logout">Logout</a></p>
+  </body>
+</html>
